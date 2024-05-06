@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "smorrone.github.io/test.schema/ap-resources/v1.0.0/ap-schema.json",
+  "title": "Analysis and Processing Resources (A/P) Extension",
+  "description": "STAC Storage Extension to a STAC Item and STAC Assets for the purpose of documenting analysis and processing resources.",
+  "type": "object",
+  "required": [
+    "stac_extensions"
+  ],
+  "properties": {
+    "stac_extensions": {
+      "type": "array",
+      "contains": {
+        "const": "smorrone.github.io/test.schema/ap-resources/v1.0.0/ap-schema.json"
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "$comment": "This is the schema for STAC Items.",
+      "type": "object",
+      "required": [
+        "type",
+        "properties",
+        "assets"
+      ],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "properties": {
+          "$ref": "#/definitions/fields"
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/fields"
+          }
+        }
+      }
+    },
+    {
+      "$comment": "This is the schema for STAC Collections",
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "const": "Collection"
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/fields"
+          }
+        },
+        "item_assets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/fields"
+          }
+        }
+      }
+    }
+  ],  
+  "definitions": {
+    "fields": {
+      "type": "object",
+      "properties": {
+        "ap-resource:input_data_used": {
+          "title": "Input_Data_used",
+          "type": "string"
+        },
+ "ap-resource:output_data_obtained": {
+          "title": "Output_Data_obtained",
+          "type": "string"
+        }
+      }
+    }
+  }
+}
