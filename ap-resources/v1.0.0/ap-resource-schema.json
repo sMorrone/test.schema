@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "stac_version": "1.0.0",
   "$id": "smorrone.github.io/test.schema/ap-resources/v1.0.0/ap-schema.json",
   "title": "Analysis and Processing Resources (A/P) Extension",
   "description": "STAC Storage Extension to a STAC Item and STAC Assets for the purpose of documenting analysis and processing resources.",
